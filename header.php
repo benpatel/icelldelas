@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="assets/lib/jquery.bxslider/jquery.bxslider.css" />
     <link rel="stylesheet" type="text/css" href="assets/lib/owl.carousel/owl.carousel.css" />
     <link rel="stylesheet" type="text/css" href="assets/lib/jquery-ui/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="assets/lib/fancyBox/jquery.fancybox.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/animate.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
@@ -16,7 +17,7 @@
     
     <title>Kute shop</title>
 </head>
-<body class="home">
+<body class="product-page">
 <!-- TOP BANNER -->
 <div id="top-banner" class="top-banner">
     <div class="bg-overlay"></div>
