@@ -1,0 +1,14 @@
+<?php 
+date_default_timezone_set('America/New_York');
+require_once("functions.php");
+require_once("database.php");
+require_once("user.php");
+require_once("orders.php");
+require_once("product.php");
+
+if($_SESSION['loged_in']!="YES"){
+	redirect_to("login.php");
+}
+
+
+?>
