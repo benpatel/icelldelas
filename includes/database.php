@@ -12,7 +12,7 @@ class Database{
 	}
 	
 	public function open_connection(){
-			$this->connection = mysql_connect(DB_SREVER,DB_USER,DB_PASS);
+			$this->connection = mysqli_connect(DB_SREVER,DB_USER,DB_PASS);
 				if (!$this->connection)
 				{
 				die("database Connection Failed:".mysql_error());	
