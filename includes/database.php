@@ -12,7 +12,7 @@ class Database{
 	}
 	
 	public function open_connection(){
-			$this->connection = mysqli_connect(DB_SREVER,DB_USER,DB_PASS);
+			$this->connection = mysqli_connect(DB_SREVER,DB_USER,DB_PASS,DB_NAME);
 				if (!$this->connection)
 				{
 				die("database Connection Failed:".mysql_error());	
@@ -20,12 +20,7 @@ class Database{
 				else
 				{
 				
-					$db_connect = mysql_select_db(DB_NAME,$this->connection);
-
-					if (!$db_connect)
-						{	
-						die("database Connection Failed:".mysql_error());
-						}	
+	
 				}
 		}
 		
@@ -42,7 +37,7 @@ class Database{
 	public function query($sql){
 	
 	$this->last_query =$sql;	
-	$result = mysql_query($sql,$this->connection);
+	$result = mysqli_query($this->connection,$sql);
 	$this->confirm_query($result);
 	return $result;
 		
