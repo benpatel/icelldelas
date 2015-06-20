@@ -2,7 +2,7 @@
 
 
 require_once("constant.php");
-$connect = mysql_connect(DB_SREVER,DB_USER,DB_PASS);
+$connect = mysqli_connect(DB_SREVER,DB_USER,DB_PASS);
 
 if (!$connect)
 {
