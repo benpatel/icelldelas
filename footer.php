@@ -112,7 +112,7 @@
             </div> <!-- /#trademark-box -->
             
             <!-- #trademark-text-box -->
-            <div id="trademark-text-box" class="row">
+            <!-- <div id="trademark-text-box" class="row">
                 <div class="col-sm-12">
                     <ul id="trademark-search-list" class="trademark-list">
                         <li class="trademark-text-tit">HOT SEARCHED KEYWORDS:</li>
@@ -202,8 +202,9 @@
                         <li><a href="#" >Nikeo Shoes</a></li>
                     </ul>
                 </div>
-            </div><!-- /#trademark-text-box -->
-            <div id="footer-menu-box">
+            </div> -->
+            <!-- /#trademark-text-box -->
+            <!-- <div id="footer-menu-box">
                 <div class="col-sm-12">
                     <ul class="footer-menu-list">
                         <li><a href="#" >Company Info - Partnerships</a></li>
@@ -250,7 +251,8 @@
                     </ul>
                 </div>
                 <p class="text-center">Copyrights &#169; 2015 KuteShop. All Rights Reserved. Designed by KuteThemes.com</p>
-            </div><!-- /#footer-menu-box -->
+            </div> -->
+            <!-- /#footer-menu-box -->
         </div> 
 </footer>
 
