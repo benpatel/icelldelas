@@ -153,18 +153,7 @@
                             </div>
                             <div id="navbar" class="navbar-collapse collapse">
                                 <ul class="nav navbar-nav">
-                                   
-                                    <li class="active"><a href="#">Home</a></li>
-                                    
-                                    <?php
-									
-									for($x =0; $x>5; $x++){
-										echo '<li class="active"><a href="#">Home</a></li>';
-									}
-									
-									
-									?>
-
+   									<?php include_once("header_nav.html") ?>
                                 </ul>
                             </div><!--/.nav-collapse -->
                         </div>
