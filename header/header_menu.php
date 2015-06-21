@@ -154,8 +154,6 @@
                             <div id="navbar" class="navbar-collapse collapse">
                                 <ul class="nav navbar-nav">
 
-                                   <?php include_once("nav_bar.php"); ?>
-
    									<?php include_once("header_nav.html") ?>
 
                                 </ul>
