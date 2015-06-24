@@ -1924,7 +1924,7 @@ span.notify-right{
 
 }
 .product-list li .add-to-cart:hover{
-  background-color: rgba(255,51,102,0.5);
+  background-color: rgba(255,0,0,0.8);
 }
 .product-list li .add-to-cart a{
     background: url("../images/add-cart.png") no-repeat left center;
@@ -3044,7 +3044,7 @@ span.notify-right{
     clear: both;
     padding-left: 15px;
     padding-right: 15px;
-    background: #F36;
+    background: #F00;
 }
 
 .btn-add-cart:hover{
