@@ -1,3 +1,4 @@
+<?php include_once("includes/initialize.php"); ?>
 <!DOCTYPE html>
 <html>
 <head>
