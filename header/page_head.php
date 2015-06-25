@@ -1,5 +1,5 @@
     <meta charset="UTF-8">
-    <base href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/icelldeals/trunk/" target="_blank">
+    <base href="<?php echo SITE_BASE; ?>" target="_blank">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="assets/lib/bootstrap/css/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="assets/lib/font-awesome/css/font-awesome.min.css" />

@@ -17,7 +17,7 @@ while( $result = $result_set->fetch_object()){
 						<ul class="block">
 							<li class="img_container">
 								<a href="#">
-									<img class="img-responsive" src="'.SITE_BASE.'/scripts/image.php?width=200&amp;height=200&amp;image='.SITE_BASE.'assets/data/01_blue-dress.jpg" alt="sport">
+									<img class="img-responsive" src="'.SITE_BASE.'scripts/image.php?width=200&amp;height=200&amp;image='.SITE_BASE.'assets/data/01_blue-dress.jpg" alt="sport">
 								</a>
 								<a href="#" class="nav_product_image">'.$result1->name.'</a>
 								<p>
