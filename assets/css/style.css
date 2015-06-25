@@ -4480,3 +4480,18 @@ span.notify-right{
   left: inherit;
   right: 26px;
 }
+/* Price style*/
+.sale_price{
+  color: #ff0000;
+  font-weight: bold; 
+  font-size: 16px;
+  line-height:2.1;
+  margin-left: -10px;
+}
+ .msp_price{
+	 font-size: 15px;
+	 line-height:2.1;
+	 color:#666; 
+	 text-decoration: line-through; 
+	 margin-left: 10px;
+}
