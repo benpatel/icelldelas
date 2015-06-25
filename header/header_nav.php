@@ -34,8 +34,9 @@ while( $result = $result_set->fetch_object()){
  $list .= '</li>';
 
 }
-
-
+echo "<pre>";
+print_r($_SERVER);
+echo "</pre>";
 $myFile = "header_nav.html"; // or .php   
 $fh = fopen($myFile, 'w'); // or die("error");  
 $stringData = $list;   	
