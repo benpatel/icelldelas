@@ -275,6 +275,14 @@
 
 
 <script type="text/javascript" src="assets/js/theme-script.js"></script>
+<script type="text/javascript">
+    
+$('a[data-toggle="tooltip"]').tooltip({
+    animated: 'fade',
+    placement: 'bottom',
+});
 
+    
+</script>
 </body>
 </html>
