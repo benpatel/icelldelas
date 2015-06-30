@@ -5,7 +5,7 @@ $result_set = $dtb->query($sql);
 
 $list = '<li class="active"><a href="#">Home</a></li>';
 while( $result = $result_set->fetch_object()){
-			$list .=  '<li class="dropdown">
+			$list .=  '<li class="dropdown drp">
            <a href="category.html" class="dropdown-toggle" data-toggle="dropdown">'.$result->category_name.'</a>';
 		   
 		   	$sql1 = "select * from products where promotion_category={$result->id} order by id limit 4";
