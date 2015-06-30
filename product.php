@@ -9,7 +9,7 @@ $id=intval($_REQUEST['id'])
 <div class="">
 <?php
 
-$sql = "select * from products where id={$id} and product_type='parent'";
+$sql = "select * from products where id={$id} limit 1";
 $result_set = $dtb->query($sql);
 while( $result = $result_set->fetch_object()){
 	
@@ -27,7 +27,8 @@ while( $result = $result_set->fetch_object()){
 	'sale_start_date'=>$result->sale_start_date,
 	'sale_end_date'=>$result->sale_end_date,
 	'quantity'=>$result->quantity,
-	'color'=>$result->color
+	'color'=>$result->color,
+    'variation_type'=>$result->variation_type
 	);
 }
 
@@ -117,30 +118,50 @@ while( $result = $result_set->fetch_object()){
                                     </div>
                                 </div>
                                 <div class="product-price-group">
-                                    <span class="price">$38.95</span>
-                                    <span class="old-price">$52.00</span>
-                                    <span class="discount">-30%</span>
+                                    <?php if($product['sale_price'] < $product['msp_price']){
+
+                                    ?>
+                                    <span class="price">    $<?php echo number_format($product['sale_price'],2) ?></span>
+                                    <span class="old-price">$<?php echo number_format($product['msp_price'],2) ?></span>
+                                    <span class="discount">-<?php echo floor(($product['msp_price']-$product['sale_price'])*100/$product['msp_price']) ?>%</span>
+                                
+
+                                    <?php  }   
+                                    else{ 
+                                        ?>
+                                        <span class="price">$<?php echo $product['msp_price']; ?></span>
+                                    <?php  }   ?>
+
                                 </div>
                                 <div class="info-orther">
-                                    <p>Item Code: #453217907</p>
-                                    <p>Availability: <span class="in-stock">In stock</span></p>
-                                    <p>Condition: New</p>
+                                    <p>Item Code: # PRD<?php echo $product['id']; ?></p>
+                                    <!-- <p>Availability: <span class="in-stock">In stock</span></p> -->
+                                    <p>Condition: <?php echo $product['condition']; ?></p>
                                 </div>
                                 <div class="product-desc">
                                     Vestibulum eu odio. Suspendisse potenti. Morbi mollis tellus ac sapien. Praesent egestas tristique nibh. Nullam dictum felis eu pede mollis pretium.Fusce egestas elit eget lorem. 
                                 </div>
+
+
+
+<?php if($product['variation_type']=='color') {   ?>
                                 <div class="form-option">
                                     <p class="form-option-title">Available Options:</p>
                                     <div class="attributes">
                                         <div class="attribute-label">Color:</div>
                                         <div class="attribute-list">
                                             <ul class="list-color">
-                                                <li style="background:#0c3b90;"><a href="#">red</a></li>
-                                                <li style="background:#036c5d;" class="active"><a href="#">red</a></li>
-                                                <li style="background:#5f2363;"><a href="#">red</a></li>
-                                                <li style="background:#ffc000;"><a href="#">red</a></li>
-                                                <li style="background:#36a93c;"><a href="#">red</a></li>
-                                                <li style="background:#ff0000;"><a href="#">red</a></li>
+
+<?php 
+$sqlc = "select * from variations where parent_product_id={$product['id']} and variation_type='color'";
+$result_setc = $dtb->query($sqlc);
+while( $resultc = $result_setc->fetch_object()){
+
+    ?>
+                                                <li style="background:<?php echo $resultc->hexa?>;"><a href="#" data-toggle="tooltip" title="<?php echo ucfirst($resultc->color) ?>"><?php echo $resultc->color ?></a></li>
+
+<?php } ?>
+
                                             </ul>
                                         </div>
                                     </div>
@@ -160,18 +181,7 @@ while( $result = $result_set->fetch_object()){
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="attributes">
-                                        <div class="attribute-label">Size:</div>
-                                        <div class="attribute-list">
-                                            <select>
-                                                <option value="1">X</option>
-                                                <option value="2">XL</option>
-                                                <option value="3">XXL</option>
-                                            </select>
-                                            <a id="size_chart" class="fancybox" href="assets/data/size-chart.jpg">Size Chart</a>
-                                        </div>
-                                        
-                                    </div>
+                                 
                                 </div>
                                 <div class="form-action">
                                     <div class="button-group">
@@ -185,6 +195,7 @@ while( $result = $result_set->fetch_object()){
                                         Compare</a>
                                     </div>
                                 </div>
+<?php } ?>                                
                                 <div class="form-share">
                                     <div class="sendtofriend-print">
                                         <a href="javascript:print();"><i class="fa fa-print"></i> Print</a>
