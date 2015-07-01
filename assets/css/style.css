@@ -1234,6 +1234,11 @@ span.notify-right{
 #main-menu li.dropdown:hover:before {
   display: block;
 }
+.main-menu .nav_product_name{
+  margin-top: 5px;
+  font-size: 15px;
+  display: block;
+}
 
 /*---------------
 [4. Nav menu]
@@ -1286,6 +1291,7 @@ span.notify-right{
       line-height: inherit;
       color: #fff;
 }
+
 .floor-elevator{
     width: 70px;
     height: 50px;
