@@ -130,12 +130,25 @@ while( $result = $result_set->fetch_object()){
 <?php 
 $sqlc = "select * from variations where parent_product_id={$product['id']} and variation_type='color'";
 $result_setc = $dtb->query($sqlc);
+$swatch_count=0;
 while( $resultc = $result_setc->fetch_object()){
-
+$swatch_color = $resultc->hexa;
+if($swatch_count==0){
+    $swatch_class="active";
+    $swatch_active_color="#fff";
+}
+else{
+     $swatch_active_color = $swatch_color;
+     $swatch_class ='';
+    }
     ?>
-                                                <li style="background:<?php echo $resultc->hexa?>;"><a href="#" class="swatch" data-toggle="tooltip" title="<?php echo ucfirst($resultc->color) ?>"><?php echo $resultc->color ?></a></li>
+                                                <li style="background:<?php echo $resultc->hexa?>;"><a href="#" class="swatch <?php echo $swatch_class; ?>" data-toggle="tooltip" title="<?php echo ucfirst($resultc->color) ?>"><span class="fa fa-check swatch_color_active"  style="color:<?php echo $swatch_active_color ?>;"></span></a></li>
 
-<?php } ?>
+
+
+<?php 
+$swatch_count++;
+} ?>
 
                                             </ul>
                                         </div>

@@ -3793,7 +3793,9 @@ span.notify-right{
   width: 20px;
   height: 20px;
   float: left;
-  text-indent: -9999px;  
+  margin-top: -6px;
+  margin-left: 2px;
+
 }
 #product .pb-right-column .form-action{
   padding: 0;
