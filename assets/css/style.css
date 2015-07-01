@@ -3764,6 +3764,8 @@ span.notify-right{
   height: 10px;
   float: left;
   text-align: center;
+  line-height: normal;
+  margin-top: 2px;
 /*  cursor: inherit;*/
 }
 
