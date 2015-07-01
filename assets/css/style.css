@@ -3756,7 +3756,7 @@ span.notify-right{
   height: 29px;
   float: left;
   display: inline-block;
-  margin-top: -5px;
+/*  margin-top: -5px;*/
 
 }
 #product .pb-right-column .form-option .btn-plus a{
@@ -3764,7 +3764,7 @@ span.notify-right{
   height: 10px;
   float: left;
   text-align: center;
-  cursor: inherit;
+/*  cursor: inherit;*/
 }
 
 #product .pb-right-column .form-option .attributes input{
