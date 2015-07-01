@@ -4504,3 +4504,6 @@ span.notify-right{
 	 text-decoration: line-through; 
 	 margin-left: 10px;
 }
+.working{
+  display: none;
+}
