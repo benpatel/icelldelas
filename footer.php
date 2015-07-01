@@ -282,7 +282,41 @@ $('a[data-toggle="tooltip"]').tooltip({
     placement: 'bottom',
 });
 
-    
+$('.swatch').on("click",function(evt){
+    $('.swatch').removeClass('active');
+    var swatch_color = $('.swatch').css("background-color");
+    $('.swatch').find('.swatch_color_active').css("color",swatch_color);
+    $(this).addClass('active');
+    $(this).find('.swatch_color_active').css("color","white");
+
+    var id = $(this).data('product-id');
+
+
+
+var request = $.ajax({
+  url: "get_price.php",
+  method: "POST",
+  data: { "id" : id },
+  dataType: "json"
+});
+ 
+request.done(function( data ) {
+  $('#product_price .price').text("$"+data.sale_price);
+    $('#product_price .discount').text("-%"+(data.msp_price-data.sale_price)*100/data.msp_price);
+    $('#product_price .old-price').text("$"+data.msp_price);
+});
+
+    return false;
+}) ;   
+
+
+  $(document).ajaxStart(function() {
+        $('.working').show();
+        $('#product_price').hide();
+    }).ajaxStop(function() {
+        $('.working').hide();
+        $('#product_price').show();
+    });    
 </script>
 </body>
 </html>
