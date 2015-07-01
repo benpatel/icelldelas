@@ -134,6 +134,17 @@ $swatch_count=0;
 while( $resultc = $result_setc->fetch_object()){
 $swatch_color = $resultc->hexa;
 if($swatch_count==0){
+
+    $variation= array(
+    'id'=>$resultc->id,
+    'sale_price'=>$resultc->sale_price,
+    'msp_price'=>$resultc->msp_price,
+    'sale_start_date'=>$resultc->sale_start_date,
+    'sale_end_date'=>$resultc->sale_end_date,
+    'whole_sale_price'=>$resultc->whole_sale_price
+    );
+
+
     $swatch_class="active";
     $swatch_active_color="#fff";
 }
@@ -142,7 +153,7 @@ else{
      $swatch_class ='';
     }
     ?>
-                                                <li style="background:<?php echo $resultc->hexa?>;"><a href="#" class="swatch <?php echo $swatch_class; ?>" data-toggle="tooltip" title="<?php echo ucfirst($resultc->color) ?>"><span class="fa fa-check swatch_color_active"  style="color:<?php echo $swatch_active_color ?>;"></span></a></li>
+   <li style="background:<?php echo $resultc->hexa?>;"><a href="#" data-product-id="<?php echo $resultc->id?>" class="swatch <?php echo $swatch_class; ?>" data-toggle="tooltip" title="<?php echo ucfirst($resultc->color) ?>"><span class="fa fa-check swatch_color_active"  style="color:<?php echo $swatch_active_color ?>;"></span></a></li>
 
 
 
@@ -153,9 +164,10 @@ $swatch_count++;
                                             </ul>
                                         </div>
                                     </div>
+                                     <form action="add_to_cart.php" method="post">
                                     <div class="attributes">
 
-                                        <form action="add_to_cart.php" method="post">
+                                       
                                 <input type="hidden" value="<?php echo $product['id'] ?>" name="id" />
                                 
                                 
@@ -177,6 +189,30 @@ $swatch_count++;
                                     </div>
                                  
                                 </div>
+
+                                <div class="working"><img src="assets/images/loading.gif" /></div>
+                                <div class="product-price-group" id="product_price">
+
+                                    <?php if($variation['sale_price'] < $variation['msp_price']){
+
+                                    ?>
+                                    <span class="price">    $<?php echo number_format($variation['sale_price'],2) ?></span>
+                                    <span class="old-price">$<?php echo number_format($variation['msp_price'],2) ?></span>
+                                    <span class="discount">-<?php echo floor(($variation['msp_price']-$variation['sale_price'])*100/$variation['msp_price']) ?>%</span>
+                                
+
+                                    <?php  }   
+                                    else{ 
+                                        ?>
+                                        <span class="price">$<?php echo $variation['msp_price']; ?></span>
+                                    <?php  }   ?>
+
+                                </div>
+
+
+
+
+
                                 <div class="form-action">
                                     <div class="button-group">
                                         <input type="submit" class="btn-add-cart" value="Add to cart">
