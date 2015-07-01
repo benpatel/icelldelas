@@ -4,7 +4,7 @@
                 <a class="first-item" href="#"><img alt="phone" src="assets/images/phone.png" />00-62-658-658</a>
                 <a href="#"><img alt="email" src="assets/images/email.png" />Contact us today!</a>
             </div>
-            <div class="currency ">
+           <!-- <div class="currency ">
                 <div class="dropdown">
                       <a class="current-open" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">USD</a>
                       <ul class="dropdown-menu" role="menu">
@@ -24,7 +24,7 @@
                         <li><a href="#"><img alt="email" src="assets/images/fr.jpg" />French</a></li>
                     </ul>
                 </div>
-            </div>
+            </div> -->
             
             <div class="support-link">
                 <a href="#">Services</a>

@@ -17,17 +17,8 @@ while( $result = $result_set->fetch_object()){
 	'id'=>$result->id,
 	'name'=>$result->name,
 	'sku'=>$result->sku,
-	'upc'=>$result->upc,
 	'brand'=>$result->brand,
-	'condition'=>$result->condition,
 	'description'=>$result->description,
-	'sale_price'=>$result->sale_price,
-	'whole_sale_price'=>$result->whole_sale_price,
-	'msp_price'=>$result->msp_price,
-	'sale_start_date'=>$result->sale_start_date,
-	'sale_end_date'=>$result->sale_end_date,
-	'quantity'=>$result->quantity,
-	'color'=>$result->color,
     'variation_type'=>$result->variation_type
 	);
 }
@@ -117,26 +108,10 @@ while( $result = $result_set->fetch_object()){
                                         <a href="#"><i class="fa fa-pencil"></i> write a review</a>
                                     </div>
                                 </div>
-                                <div class="product-price-group">
-                                    <?php if($product['sale_price'] < $product['msp_price']){
-
-                                    ?>
-                                    <span class="price">    $<?php echo number_format($product['sale_price'],2) ?></span>
-                                    <span class="old-price">$<?php echo number_format($product['msp_price'],2) ?></span>
-                                    <span class="discount">-<?php echo floor(($product['msp_price']-$product['sale_price'])*100/$product['msp_price']) ?>%</span>
                                 
-
-                                    <?php  }   
-                                    else{ 
-                                        ?>
-                                        <span class="price">$<?php echo $product['msp_price']; ?></span>
-                                    <?php  }   ?>
-
-                                </div>
                                 <div class="info-orther">
                                     <p>Item Code: # PRD<?php echo $product['id']; ?></p>
                                     <!-- <p>Availability: <span class="in-stock">In stock</span></p> -->
-                                    <p>Condition: <?php echo $product['condition']; ?></p>
                                 </div>
                                 <div class="product-desc">
                                     Vestibulum eu odio. Suspendisse potenti. Morbi mollis tellus ac sapien. Praesent egestas tristique nibh. Nullam dictum felis eu pede mollis pretium.Fusce egestas elit eget lorem. 
@@ -158,7 +133,7 @@ $result_setc = $dtb->query($sqlc);
 while( $resultc = $result_setc->fetch_object()){
 
     ?>
-                                                <li style="background:<?php echo $resultc->hexa?>;"><a href="#" data-toggle="tooltip" title="<?php echo ucfirst($resultc->color) ?>"><?php echo $resultc->color ?></a></li>
+                                                <li style="background:<?php echo $resultc->hexa?>;"><a href="#" class="swatch" data-toggle="tooltip" title="<?php echo ucfirst($resultc->color) ?>"><?php echo $resultc->color ?></a></li>
 
 <?php } ?>
 
@@ -166,10 +141,16 @@ while( $resultc = $result_setc->fetch_object()){
                                         </div>
                                     </div>
                                     <div class="attributes">
+
+                                        <form action="add_to_cart.php" method="post">
+                                <input type="hidden" value="<?php echo $product['id'] ?>" name="id" />
+                                
+                                
+                               
                                         <div class="attribute-label">Qty:</div>
                                         <div class="attribute-list product-qty">
                                             <div class="qty">
-                                                <input id="option-product-qty" type="text" value="1">
+                                                <input id="option-product-qty" type="text"  name="qty"value="1">
                                             </div>
                                             <div class="btn-plus">
                                                 <a href="#" class="btn-plus-up">
@@ -185,7 +166,7 @@ while( $resultc = $result_setc->fetch_object()){
                                 </div>
                                 <div class="form-action">
                                     <div class="button-group">
-                                        <a class="btn-add-cart" href="#">Add to cart</a>
+                                        <input type="submit" class="btn-add-cart" value="Add to cart">
                                     </div>
                                     <div class="button-group">
                                         <a class="wishlist" href="#"><i class="fa fa-heart-o"></i>
@@ -195,6 +176,7 @@ while( $resultc = $result_setc->fetch_object()){
                                         Compare</a>
                                     </div>
                                 </div>
+                                 </form>
 <?php } ?>                                
                                 <div class="form-share">
                                     <div class="sendtofriend-print">

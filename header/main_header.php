@@ -1,4 +1,15 @@
   <!-- MAIN HEADER -->
+<?php 
+        if(isset($_SESSION['qty']) && count($_SESSION['qty'])>0){
+                $cart_qty =  $_SESSION['qty'];
+        }
+        else{
+            $cart_qty =  0;
+        }
+        if(!isset($_SESSION['cart_total'])){
+            $_SESSION['cart_total']=0;
+        }
+?>
     <div class="container main-header">
         <div class="row">
             <div class="col-xs-12 col-sm-3 logo">
@@ -22,12 +33,12 @@
             <div id="cart-block" class="col-xs-5 col-sm-2 shopping-cart-box">
                 <a class="cart-link" href="order.html">
                     <span class="title">Shopping cart</span>
-                    <span class="total">2 items - 122.38 €</span>
-                    <span class="notify notify-left">2</span>
+                    <span class="total">Total - $<?php echo $_SESSION['cart_total']; ?></span>
+                    <span class="notify notify-left"><?php echo $cart_qty; ?></span>
                 </a>
-                <div class="cart-block">
+              <!--  <div class="cart-block">
                     <div class="cart-block-content">
-                        <h5 class="cart-title">2 Items in my cart</h5>
+                        <h5 class="cart-title"><?php echo $cart_qty; ?> Items in my cart</h5>
                         <div class="cart-block-list">
                             <ul>
                                 <li class="product-info">
@@ -77,7 +88,7 @@
                             <a href="order.html" class="btn-check-out">Checkout</a>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
         
