@@ -304,6 +304,7 @@ request.done(function( data ) {
   $('#product_price .price').text("$"+data.sale_price);
     $('#product_price .discount').text("-%"+(data.msp_price-data.sale_price)*100/data.msp_price);
     $('#product_price .old-price').text("$"+data.msp_price);
+    $('#cart_product_id').val(data.id)
 });
 
     return false;

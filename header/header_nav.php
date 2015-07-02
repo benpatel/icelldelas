@@ -21,15 +21,8 @@ while( $result = $result_set->fetch_object()){
 									<img class="img-responsive" src="'.SITE_BASE.'scripts/image.php?width=200&amp;height=200&amp;image='.SITE_BASE.'assets/data/01_blue-dress.jpg" alt="sport">
 								</a>
 								<a href="product/'.$result1->id.'/'.str_replace(" ","_",$result1->name).'" class="nav_product_image">'.$result1->name.'</a>
-								<p>
-								<span class="sale_price">$'.$result1->sale_price.'</span>
-								<span class="msp_price">$'.$result1->msp_price.'</span>
-								</p>
-								<form action="add_to_cart.php" method="post">
-								<input type="hidden" value="'.$result1->id.'" name="id" />
-								<input type="hidden" value="1" name="qty" />
-								<input type="submit" class="btn-add-cart" value="Add to cart">
-								</form>
+							<p><a href="product/'.$result1->id.'/'.str_replace(" ","_",$result1->name).'" class="btn-add-cart" >Buy Now</a></p>
+
 							</li>
 						</ul>
 					</li>';			   

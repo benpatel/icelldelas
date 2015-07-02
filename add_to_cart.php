@@ -28,7 +28,7 @@ else{
 $_SESSION['cart_total']=0;
 foreach($_SESSION['cart'] as $id =>$prd){
 
-	$sql = "select * from products where id={$id} limit 1";
+	$sql = "select * from variations where id={$id} limit 1";
 	$result_set = $dtb->query($sql);
 	while( $result = $result_set->fetch_object()){
 		
