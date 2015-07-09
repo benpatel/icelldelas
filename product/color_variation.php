@@ -100,9 +100,7 @@ $swatch_count++;
                                     <div class="button-group">
                                         <a class="wishlist" href="#"><i class="fa fa-heart-o"></i>
                                         <br>Wishlist</a>
-                                        <a class="compare" href="#"><i class="fa fa-signal"></i>
-                                        <br>        
-                                        Compare</a>
+                                  
                                     </div>
                                 </div>
                                  </form>

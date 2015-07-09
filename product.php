@@ -122,10 +122,10 @@ while( $result = $result_set->fetch_object()){
                             <?php include_once("product/no_variation.php"); ?>                            
 
                                 <div class="form-share">
-                                    <div class="sendtofriend-print">
+                                    <!-- <div class="sendtofriend-print">
                                         <a href="javascript:print();"><i class="fa fa-print"></i> Print</a>
                                         <a href="#"><i class="fa fa-envelope-o fa-fw"></i>Send to a friend</a>
-                                    </div>
+                                    </div> -->
                                     <div class="network-share">
                                     </div>
                                 </div>

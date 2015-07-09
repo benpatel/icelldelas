@@ -13,7 +13,7 @@
     <div class="container main-header">
         <div class="row">
             <div class="col-xs-12 col-sm-3 logo">
-                <a href="index.html"><img alt="Kute Shop" src="assets/images/logo.png" /></a>
+                <a href="index.php"><img alt="Kute Shop" src="assets/images/logo.png" /></a>
             </div>
             <div class="col-xs-7 col-sm-7 header-search-box">
                 <form class="form-inline">
@@ -31,7 +31,7 @@
                 </form>
             </div>
             <div id="cart-block" class="col-xs-5 col-sm-2 shopping-cart-box">
-                <a class="cart-link" href="order.html">
+                <a class="cart-link" href="cart.php">
                     <span class="title">Shopping cart</span>
                     <span class="total">Total - $<?php echo $_SESSION['cart_total']; ?></span>
                     <span class="notify notify-left"><?php echo $cart_qty; ?></span>
