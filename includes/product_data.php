@@ -22,8 +22,9 @@ class Product{
 				$result_setc = $dtb->query($sqlc);
 
 				while( $resultc = $result_setc->fetch_object()){
-					$cart_data[$cart_item_rank]=$resultc->id;
-					$cart_data[$cart_item_rank]=$resultc->id;
+					$cart_data[$cart_item_rank]['id']=$resultc->id;
+					$cart_data[$cart_item_rank]['sku']=$resultc->sku;
+					$cart_data[$cart_item_rank]['qty']=$qty;
 				}
 
 
