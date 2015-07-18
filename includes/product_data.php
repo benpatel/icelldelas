@@ -30,8 +30,9 @@ class Product{
 						
                     	$cart_item_rank++;
 			}
-			}
 			return $cart_data;
+			}
+			
 		}
 		
 
