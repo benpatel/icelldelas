@@ -41,16 +41,15 @@
                     <tbody>
                     <?php	
                     foreach($_SESSION['cart'] as $id =>$qty){
-
-                    }
-                    ?>
+                    	
+					?>
                         <tr>
                             <td class="cart_product">
                                 <a href="#"><img src="assets/data/product-100x122.jpg" alt="Product"></a>
                             </td>
                             <td class="cart_description">
                                 <p class="product-name"><a href="#">Frederique Constant </a></p>
-                                <small class="cart_ref">SKU : #123654999</small><br>
+                                <small class="cart_ref">SKU : #<?php echo $id; ?></small><br>
                                 <small><a href="#">Color : Beige</a></small><br>   
                                 <small><a href="#">Size : S</a></small>
                             </td>
@@ -68,30 +67,10 @@
                                 <a href="#">Delete item</a>
                             </td>
                         </tr>
-                        <tr>
-                            <td class="cart_product">
-                                <a href="#"><img src="assets/data/product-100x122.jpg" alt="Product"></a>
-                            </td>
-                            <td class="cart_description">
-                                <p class="product-name"><a href="#">Frederique Constant </a></p>
-                                <small class="cart_ref">SKU : #123654999</small><br>
-                                <small><a href="#">Color : Beige</a></small><br>   
-                                <small><a href="#">Size : S</a></small>
-                            </td>
+                <?php 
+                	}
+                    ?>
                     
-                            <td class="price"><span>61,19 €</span></td>
-                            <td class="qty">
-                                <input class="form-control input-sm" type="text" value="1">
-                                <a href="#"><i class="fa fa-caret-up"></i></a>
-                                <a href="#"><i class="fa fa-caret-down"></i></a>
-                            </td>
-                            <td class="price">
-                                <span>61,19 €</span>
-                            </td>
-                            <td class="action">
-                                <a href="#">Delete item</a>
-                            </td>
-                        </tr>
                     </tbody>
                     <tfoot>
                         <tr>
