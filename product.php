@@ -17,6 +17,7 @@ while( $result = $result_set->fetch_object()){
 	'id'=>$result->id,
 	'name'=>$result->name,
 	'sku'=>$result->sku,
+    'img'=>$result->img,
 	'brand'=>$result->brand,
 	'description'=>$result->description,
     'variation_type'=>$result->variation_type
@@ -54,40 +55,49 @@ while( $result = $result_set->fetch_object()){
                                 <!-- product-imge-->
                                 <div class="product-image">
                                     <div class="product-full">
-                                        <img id="product-zoom" src='assets/data/product-s3-420x512.jpg' data-zoom-image="assets/data/product-s3-850x1036.jpg"/>
+                                        <img id="product-zoom" src="<?php echo SITE_BASE.'scripts/image.php?width=400&amp;height=400&amp;image='.SITE_BASE.'product_images/'.$product['img']; ?>" data-zoom-image="<?php echo SITE_BASE.'scripts/image.php?width=800&amp;height=800&amp;image='.SITE_BASE.'product_images/'.$product['img']; ?>"/>
                                     </div>
                                     <div class="product-img-thumb" id="gallery_01">
-                                        <ul class="owl-carousel" data-items="3" data-nav="true" data-dots="false" data-margin="20" data-loop="true">
-                                            <li>
-                                                <a href="#" data-image="assets/data/product-s3-420x512.jpg" data-zoom-image="assets/data/product-s3-850x1036.jpg">
-                                                    <img id="product-zoom"  src="assets/data/product-s3-100x122.jpg" /> 
+                                        <ul class="owl-carouselx" id="image_slider" data-items="3" data-nav="true" data-dots="false" data-margin="20" data-loop="true">
+
+                                        <?php
+
+                                        echo '<li>
+
+                                                <a href="#" data-image="'.SITE_BASE.'scripts/image.php?width=400&amp;height=400&amp;image='.SITE_BASE.'product_images/'.$product['img'].'" data-zoom-image="'.SITE_BASE.'scripts/image.php?width=800&amp;height=800&amp;image='.SITE_BASE.'product_images/'.$product['img'].'">
+                                                    <img id="product-zoom"   src="'.SITE_BASE.'scripts/image.php?width=200&amp;height=200&amp;image='.SITE_BASE.'product_images/'.$product['img'].'" /> 
                                                 </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" data-image="assets/data/product-s2-420x512.jpg" data-zoom-image="assets/data/product-s2-850x1036.jpg">
-                                                    <img id="product-zoom"  src="assets/data/product-s2-100x122.jpg" /> 
+                                            </li>';
+
+
+                                        ?>
+
+
+                                        <?php
+
+                                                $sqli = "select images,color from  variations where parent_product_id={$product['id']}";
+                                                $result_seti = $dtb->query($sqli);
+                                                while( $resulti = $result_seti->fetch_object()){
+                                               
+                                                    $swatch_images = explode("|", $resulti->images);
+                                                    array_pop($swatch_images);
+
+                                                    for ($i=0; $i <count($swatch_images) ; $i++) { 
+
+                                         echo '<li>
+
+                                                <a href="#" class="'.$resulti->color.'" data-image="'.SITE_BASE.'scripts/image.php?width=400&amp;height=400&amp;image='.SITE_BASE.'product_images/'.$swatch_images[$i].'" data-zoom-image="'.SITE_BASE.'scripts/image.php?width=800&amp;height=800&amp;image='.SITE_BASE.'product_images/'.$swatch_images[$i].'">
+                                                    <img id="product-zoom"   src="'.SITE_BASE.'scripts/image.php?width=200&amp;height=200&amp;image='.SITE_BASE.'product_images/'.$swatch_images[$i].'" /> 
                                                 </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" data-image="assets/data/product-420x512.jpg" data-zoom-image="assets/data/product-850x1036.jpg">
-                                                    <img id="product-zoom"  src="assets/data/product-100x122.jpg" /> 
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" data-image="assets/data/product-s4-420x512.jpg" data-zoom-image="assets/data/product-s4-850x1036.jpg">
-                                                    <img id="product-zoom"  src="assets/data/product-s4-100x122.jpg" /> 
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" data-image="assets/data/product-s5-420x512.jpg" data-zoom-image="assets/data/product-s5-850x1036.jpg">
-                                                    <img id="product-zoom"  src="assets/data/product-s5-100x122.jpg" /> 
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" data-image="assets/data/product-s6-420x512.jpg" data-zoom-image="assets/data/product-s6-850x1036.jpg">
-                                                    <img id="product-zoom"  src="assets/data/product-s6-100x122.jpg" /> 
-                                                </a>
-                                            </li>
+                                            </li>';
+                                                                                                                                                  
+                                                    }
+
+
+
+
+                                        }
+                                          ?> 
                                         </ul>
                                     </div>
                                 </div>

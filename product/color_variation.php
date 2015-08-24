@@ -33,7 +33,7 @@ else{
      $swatch_class ='';
     }
     ?>
-   <li style="background:<?php echo $resultc->hexa?>;"><a href="#" data-product-id="<?php echo $resultc->id?>" class="swatch <?php echo $swatch_class; ?>" data-toggle="tooltip" title="<?php echo ucfirst($resultc->color) ?>"><span class="fa fa-check swatch_color_active"  style="color:<?php echo $swatch_active_color ?>;"></span></a></li>
+   <li style="background:<?php echo $resultc->hexa?>;"><a href="#" data-product-color="<?php echo $resultc->color?>" data-product-id="<?php echo $resultc->id?>" class="swatch <?php echo $swatch_class; ?>" data-toggle="tooltip" title="<?php echo ucfirst($resultc->color) ?>"><span class="fa fa-check swatch_color_active"  style="color:<?php echo $swatch_active_color ?>;"></span></a></li>
 
 
 
@@ -101,7 +101,7 @@ $swatch_count++;
                                         <a class="wishlist" href="#"><i class="fa fa-heart-o"></i>
                                         <br>Wishlist</a>
                                   
-                                    </div>
+                                    </div>  
                                 </div>
                                  </form>
 <?php } ?>    

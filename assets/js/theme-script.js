@@ -88,6 +88,29 @@
 
 
 
+        /** OWL CAROUSEL**/
+
+        $(".owl-carouselx").each(function(index, el) {
+
+          var config = $(this).data();
+
+          config.navText = ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'];
+
+          config.smartSpeed="300";
+
+          if($(this).hasClass('owl-style2')){
+
+            config.animateOut="fadeOut";
+
+            config.animateIn="fadeIn";    
+
+          }
+
+          $(this).owlCarousel(config);
+
+        });
+
+
         $(".owl-carousel-vertical").each(function(index, el) {
 
           var config = $(this).data();

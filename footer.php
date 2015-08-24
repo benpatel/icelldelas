@@ -282,6 +282,8 @@ $('a[data-toggle="tooltip"]').tooltip({
     placement: 'bottom',
 });
 
+
+
 $('.swatch').on("click",function(evt){
     $('.swatch').removeClass('active');
     var swatch_color = $('.swatch').css("background-color");
@@ -290,8 +292,18 @@ $('.swatch').on("click",function(evt){
     $(this).find('.swatch_color_active').css("color","white");
 
     var id = $(this).data('product-id');
+    var product_color = $(this).data('product-color');
+    var sw = 0;
+    $(".owl-carousel div a."+product_color+"").each(function(){
 
+        sw++;
+        if(sw==2){
+                $(this).trigger("click");
+                console.log($(this));
+        }
 
+    });
+    //console.log($(".owl-carousel div a."+product_color+""));
 
 var request = $.ajax({
   url: "get_price.php",

@@ -17,10 +17,9 @@
         <div class="page-content page-order">
             <ul class="step">
                 <li class="current-step"><span>01. Summary</span></li>
-                <li><span>02. Sign in</span></li>
-                <li><span>03. Address</span></li>
-                <li><span>04. Shipping</span></li>
-                <li><span>05. Payment</span></li>
+                <li><span>02. Address</span></li>
+                <li><span>03. Shipping</span></li>
+                <li><span>04. Payment</span></li>
             </ul>
             <div class="heading-counter warning">Your shopping cart contains:
                 <span><?php echo $cart_qty ?> Product</span>
