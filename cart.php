@@ -40,27 +40,37 @@
                     <tbody>
                     <?php	
                     foreach($_SESSION['cart'] as $id =>$qty){
-                    	
+                    	$cart_product = $prd->get_product_details($id);
 					?>
                         <tr>
                             <td class="cart_product">
-                                <a href="#"><img src="assets/data/product-100x122.jpg" alt="Product"></a>
+                                <a href="#"><img src="<?php echo SITE_BASE.'scripts/image.php?width=100&amp;height=122&amp;image='.SITE_BASE.'product_images/'.$cart_product['image']; ?>" alt="Product"></a>
                             </td>
                             <td class="cart_description">
-                                <p class="product-name"><a href="#">Frederique Constant </a></p>
-                                <small class="cart_ref">SKU : #<?php echo $id; ?></small><br>
-                                <small><a href="#">Color : Beige</a></small><br>   
+                                <p class="product-name"><a href="#"><?php echo $cart_product['name'] ?></a></p>
+                                <small class="cart_ref">SKU : <?php echo $cart_product['main_sku'].$cart_product['sku']; ?></small><br>
+                                <?php
+                                    if($cart_product['variation_type']=="color"){
+                                ?>
+                                <small><a href="#"><?php  echo $cart_product['variation_type']." : ".$cart_product['variation_color']; ?></a></small><br>   
+                                <?php
+                                    }
+                                    elseif($cart_product['variation_type']=="size"){
+                                    ?>
                                 <small><a href="#">Size : S</a></small>
+                                <?php
+                                }
+                                ?>
                             </td>
                    
-                            <td class="price"><span>61,19 €</span></td>
+                            <td class="price"><span><?php echo "$".number_format($cart_product['price'],2) ?></span></td>
                             <td class="qty">
-                                <input class="form-control input-sm" type="text" value="1">
-                                <a href="#"><i class="fa fa-caret-up"></i></a>
-                                <a href="#"><i class="fa fa-caret-down"></i></a>
+                                <input class="form-control input-sm product_qty" type="text" value="<?php echo $qty; ?>">
+                                <a href="#" class="qty_ctrl qty_up"><i class="fa fa-caret-up"></i></a>
+                                <a href="#" class="qty_ctrl qty_down"><i class="fa fa-caret-down"></i></a>
                             </td>
                             <td class="price">
-                                <span>61,19 €</span>
+                                <span><?php echo "$".number_format($cart_product['price']*$qty,2) ?></span></span>
                             </td>
                             <td class="action">
                                 <a href="#">Delete item</a>
@@ -86,6 +96,7 @@
                 <div class="cart_navigation">
                     <a class="prev-btn" href="#">Continue shopping</a>
                     <a class="next-btn" href="#">Proceed to checkout</a>
+                    <a class="next-btn" href="#" style="margin-right:20px;">Update Cart</a>
                 </div>
             </div>
         </div>

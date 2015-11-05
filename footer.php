@@ -282,7 +282,21 @@ $('a[data-toggle="tooltip"]').tooltip({
     placement: 'bottom',
 });
 
+$('.cart_summary td.qty a.qty_ctrl').on("click",function(e){
+    if($(this).hasClass("qty_up")){
+        var cart_val = $(this).parent().find(".product_qty");
+       cart_val.val(parseInt(cart_val.val())+1);
+    }
+    else if($(this).hasClass("qty_down")){
+        var cart_val = $(this).parent().find(".product_qty");
+       if(cart_val.val()>0){
+            cart_val.val(parseInt(cart_val.val())-1);
+       }
+       
+    }
 
+    return false
+});
 
 $('.swatch').on("click",function(evt){
     $('.swatch').removeClass('active');
