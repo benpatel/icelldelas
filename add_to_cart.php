@@ -25,6 +25,8 @@ else{
 
 	$_SESSION['qty']=count($_SESSION['cart']);
 }
+
+
 $_SESSION['cart_total']=0;
 foreach($_SESSION['cart'] as $id =>$prd){
 
@@ -35,5 +37,6 @@ foreach($_SESSION['cart'] as $id =>$prd){
 		$_SESSION['cart_total'] += ($result->sale_price * $prd);
 	}
 }
+
 redirect_to($_SERVER['HTTP_REFERER'])
 ?>

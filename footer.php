@@ -291,12 +291,34 @@ $('.cart_summary td.qty a.qty_ctrl').on("click",function(e){
         var cart_val = $(this).parent().find(".product_qty");
        if(cart_val.val()>0){
             cart_val.val(parseInt(cart_val.val())-1);
+
+            if(cart_val.val()==0){
+                              remove_cart_item(cart_val.data("productid"));
+            }
        }
        
     }
 
     return false
 });
+
+
+function remove_cart_item(x){
+
+var id = x;
+    var request = $.ajax({
+                          url: "remove_item.php",
+                          method: "POST",
+                          data: { "id" : id },
+                          dataType: "json"
+                        });
+ 
+    request.done(function( data ) {
+         console.log(data);
+          location.reload();
+    })
+
+}
 
 $('.swatch').on("click",function(evt){
     $('.swatch').removeClass('active');

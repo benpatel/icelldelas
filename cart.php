@@ -37,11 +37,13 @@
                             <th  class="action"><i class="fa fa-trash-o"></i></th>
                         </tr>
                     </thead>
-                    <tbody>
+                  
                     <?php	
+                    if(isset($_SESSION['cart'])){
                     foreach($_SESSION['cart'] as $id =>$qty){
                     	$cart_product = $prd->get_product_details($id);
 					?>
+                      <tbody>
                         <tr>
                             <td class="cart_product">
                                 <a href="#"><img src="<?php echo SITE_BASE.'scripts/image.php?width=100&amp;height=122&amp;image='.SITE_BASE.'product_images/'.$cart_product['image']; ?>" alt="Product"></a>
@@ -65,7 +67,7 @@
                    
                             <td class="price"><span><?php echo "$".number_format($cart_product['price'],2) ?></span></td>
                             <td class="qty">
-                                <input class="form-control input-sm product_qty" type="text" value="<?php echo $qty; ?>">
+                                <input class="form-control input-sm product_qty"  data-productid="<?php echo $cart_product['id'] ?>" type="text" value="<?php echo $qty; ?>">
                                 <a href="#" class="qty_ctrl qty_up"><i class="fa fa-caret-up"></i></a>
                                 <a href="#" class="qty_ctrl qty_down"><i class="fa fa-caret-down"></i></a>
                             </td>
@@ -76,11 +78,12 @@
                                 <a href="#">Delete item</a>
                             </td>
                         </tr>
-                <?php 
-                	}
-                    ?>
+               
                     
                     </tbody>
+                    <?php
+                }
+                    ?>
                     <tfoot>
                         <tr>
                             <td colspan="2" rowspan="2"></td>
@@ -91,7 +94,11 @@
                             <td colspan="2"><strong>Total</strong></td>
                             <td colspan="2"><strong>122.38 €</strong></td>
                         </tr>
-                    </tfoot>    
+                    </tfoot>   
+                     <?php 
+                
+                }
+                    ?> 
                 </table>
                 <div class="cart_navigation">
                     <a class="prev-btn" href="#">Continue shopping</a>
