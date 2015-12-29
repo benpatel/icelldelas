@@ -4507,3 +4507,10 @@ span.notify-right{
 .working{
   display: none;
 }
+/* Checkout Css */
+
+
+ .checkout_steps{
+  display: none;
+ }
+ 

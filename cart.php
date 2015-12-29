@@ -24,7 +24,7 @@
             <div class="heading-counter warning">Your shopping cart contains:
                 <span><?php echo $cart_qty ?> Product</span>
             </div>
-            <div class="order-detail-content">
+            <div class="order-detail-content" id="Shopping_cart">
                 <table class="table table-bordered table-responsive cart_summary">
                     <thead>
                         <tr>
@@ -86,14 +86,11 @@
                     ?>
                     <tfoot>
                         <tr>
-                            <td colspan="2" rowspan="2"></td>
-                            <td colspan="2">Total products (tax incl.)</td>
-                            <td colspan="2">122.38 €</td>
+                            <td colspan="2" rowspan="3"></td>
+                            <td colspan="2">Total</td>
+                            <td colspan="2"><?php echo "$".number_format($_SESSION['cart_total'],2) ?></td>
                         </tr>
-                        <tr>
-                            <td colspan="2"><strong>Total</strong></td>
-                            <td colspan="2"><strong>122.38 €</strong></td>
-                        </tr>
+                                          
                     </tfoot>   
                      <?php 
                 
@@ -102,8 +99,8 @@
                 </table>
                 <div class="cart_navigation">
                     <a class="prev-btn" href="#">Continue shopping</a>
-                    <a class="next-btn" href="#">Proceed to checkout</a>
-                    <a class="next-btn" href="#" style="margin-right:20px;">Update Cart</a>
+                    <a class="next-btn" href="checkout_address.php">Proceed to checkout</a>
+                    <a class="next-btn" id="cart_update" style="margin-right:20px;">Update Cart</a>
                 </div>
             </div>
         </div>

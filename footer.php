@@ -282,6 +282,43 @@ $('a[data-toggle="tooltip"]').tooltip({
     placement: 'bottom',
 });
 
+
+
+
+// Cart Quantity Update
+
+$("#cart_update").on("click",function(){
+
+     var jsonData = {};
+    $("#Shopping_cart .qty .product_qty").each(function(){
+
+        console.log($(this).val()+" "+$(this).data("productid"))
+
+            jsonData[$(this).data("productid")]=$(this).val();
+        
+    });
+
+    update_cart_items(jsonData);
+});
+
+function update_cart_items(x){
+
+    var id = x;
+    var request = $.ajax({
+                          url: "update_cart.php",
+                          method: "POST",
+                          data: x,
+                          dataType: "json"
+                        });
+ 
+    request.done(function( data ) {
+        location.reload();
+    })
+
+}
+
+
+
 $('.cart_summary td.qty a.qty_ctrl').on("click",function(e){
     if($(this).hasClass("qty_up")){
         var cart_val = $(this).parent().find(".product_qty");
@@ -320,6 +357,8 @@ var id = x;
 
 }
 
+
+// Color Swatch Chnage and Product Update
 $('.swatch').on("click",function(evt){
     $('.swatch').removeClass('active');
     var swatch_color = $('.swatch').css("background-color");
@@ -360,6 +399,8 @@ request.done(function( data ) {
 }) ;   
 
 
+
+// Loading Ajax
   $(document).ajaxStart(function() {
         $('.working').show();
         $('#product_price').hide();
@@ -368,5 +409,6 @@ request.done(function( data ) {
         $('#product_price').show();
     });    
 </script>
+<script type="text/javascript" src="assets/js/ckt.js"></script>
 </body>
 </html>

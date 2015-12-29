@@ -2,7 +2,7 @@
 
 echo "<pre>";
 print_r($_SESSION);
-print_r($prd->cart);
+//print_r($prd->cart);
 echo "<pre>";
 
 ?>
