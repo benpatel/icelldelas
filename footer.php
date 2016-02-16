@@ -266,7 +266,7 @@
 <script type="text/javascript" src="assets/lib/owl.carousel/owl.carousel.min.js"></script>
 <script type="text/javascript" src="assets/lib/jquery.countdown/jquery.countdown.min.js"></script>
 <script type="text/javascript" src="assets/lib/jquery.elevatezoom.js"></script>
-
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.2.8/jquery.form-validator.min.js"></script>
 <script type="text/javascript" src="assets/lib/jquery-ui/jquery-ui.min.js"></script>
 
 <script type="text/javascript" src="assets/lib/fancyBox/jquery.fancybox.js"></script>
@@ -275,6 +275,7 @@
 
 
 <script type="text/javascript" src="assets/js/theme-script.js"></script>
+
 <script type="text/javascript">
     
 $('a[data-toggle="tooltip"]').tooltip({
@@ -407,7 +408,8 @@ request.done(function( data ) {
     }).ajaxStop(function() {
         $('.working').hide();
         $('#product_price').show();
-    });    
+    });  
+    
 </script>
 <script type="text/javascript" src="assets/js/ckt.js"></script>
 </body>

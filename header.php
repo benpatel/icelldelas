@@ -1,4 +1,8 @@
-<?php include_once("includes/initialize.php"); ?>
+<?php include_once("includes/initialize.php"); 
+if(!isset($_SESSION['loged_in'])){
+    $_SESSION['loged_in']="NO";
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>

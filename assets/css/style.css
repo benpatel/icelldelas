@@ -4509,8 +4509,38 @@ span.notify-right{
 }
 /* Checkout Css */
 
+.checkout-sep{
+    cursor: pointer;
+}
+#checkout_billing_address_form{
+    display: none;
+}
+#checkout_billing_data_box{
+    display: none;
+}
+#checkout_billing_data_box h3{
+    padding-bottom: 15px;
+}
+#checkout_billing_data_box p{
+    line-height: 10px;
+}
+#checkout_billing_data_box p.fname_lname{
+    font-weight: bold;
+}
 
- .checkout_steps{
-  display: none;
- }
- 
+
+#checkout_shipping_address_form{
+    display: none;
+}
+#checkout_shipping_data_box{
+    display: none;
+}
+#checkout_shipping_data_box h3{
+    padding-bottom: 15px;
+}
+#checkout_shipping_data_box p{
+    line-height: 10px;
+}
+#checkout_shipping_data_box p.fname_lname{
+    font-weight: bold;
+}

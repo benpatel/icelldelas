@@ -85,16 +85,13 @@ return $value;
 
 	}
 	
-	public function num_rows($result){
-		
-	return mysql_num_rows($result);	
-		
-		
-	}
+
 	
 	public function affected_rows(){		
+        
+        
 		
-	return mysql_affected_rows($this->connection);	
+	return mysqli_affected_rows($this->connection);	
 	}
 
 	

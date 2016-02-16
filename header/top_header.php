@@ -33,11 +33,51 @@
 
             <div id="user-info-top" class="user-info pull-right">
                 <div class="dropdown">
-                    <a class="current-open" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#"><span>My Account</span></a>
+                    <a class="current-open" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#"><span>My Account 
+                        
+                         <?php 
+                            if($_SESSION['loged_in']=="YES"){
+                                
+                                echo "(".$_SESSION['user']['fname']." ".$_SESSION['user']['lname'].")";
+                            }
+                                ?>
+                        
+                        
+                        
+                        </span></a>
                     <ul class="dropdown-menu mega_dropdown" role="menu">
+                        
+                        <?php 
+                            if($_SESSION['loged_in']=="YES"){
+                        ?>
+                        
+                        <li><a href="account.php">Account Overview</a></li>
+                        
+                        <?php
+                            }
+                            else{
+                        ?>
+                        
                         <li><a href="login.php">Login</a></li>
+                        
+                        <?php
+                            }
+
+                        ?>
+                        
+                        
                         <li><a href="#">Compare</a></li>
                         <li><a href="#">Wishlists</a></li>
+                        <?php 
+                            if($_SESSION['loged_in']=="YES"){
+                        ?>
+                        
+                        <li><a href="log_out.php" style="color:red; font-weight:bold">Log Out</a></li>
+                        
+                        <?php
+                            }
+                            ?>
+
                     </ul>
                 </div>
             </div>

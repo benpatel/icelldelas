@@ -14,261 +14,277 @@
             <span class="page-heading-title2">Checkout</span>
         </h2>
         <!-- ../page heading-->
-        <div class="page-content checkout-page">
-            <h3 class="checkout-sep">1. Checkout Method</h3>
-            <div class="box-border checkout_steps"  id="checkout_step_1">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <h4>Register and save time!</h4>
-                        <p>Register with us for future convenience:</p>
-                        <p><i class="fa fa-check-circle text-primary"></i> Fast and easy check out</p>
-                        <p><i class="fa fa-check-circle text-primary"></i> Easy access to your order history and status</p>
-                        <button class="button" id="checkout_register">Register</button>
-                    </div>
-                    <div class="col-sm-6">
-                        <h4>Login</h4>
-                        <p>Already registered? Please log in below:</p>
-                        <label>Email address</label>
-                        <input type="text" class="form-control input">
-                        <label>Password</label>
-                        <input type="password" class="form-control input">
-                        <p><a href="#">Forgot your password?</a></p>
-                        <button class="button">Login</button>
-                    </div>
+        <div class="row">
+            <div class="col-sm-8">
+            <div class="page-content checkout-page">
 
-                </div>
-            </div>
-            <h3 class="checkout-sep">2. Billing Infomations</h3>
+            <h3 class="checkout-sep">1. Billing Infomations</h3>
             <div class="box-border checkout_steps" id="checkout_step_2">
-                <ul>
-                    <li class="row">
-                        <div class="col-sm-6">
+                
+                
+                <div id="checkout_billing_from_box">
+                <p>Select Billing Address or Enter New One</p>
+                <select id="checkout_billing_address"  class="input form-control" >
+                    <?php
+    $billing_address_sql = "select * from billing where buyer_id={$_SESSION['user']['id']} order by id asc";
+                $result_set = $dtb->query($billing_address_sql);
+                while( $result = $result_set->fetch_object()){
+
+                    echo '<option value="'.$result->id.'" selected>&nbsp;'.$result->add1.','.$result->city.','.$result->state.' '.$result->zip.'</option>';
+
+                }
+
+                    if($result_set->num_rows <=0){
+                        
+                        $billing_dispaly='display:block';
+                        $addaddress ="YES";
+                    }
+                    else{
+                        $billing_dispaly='';
+                        $addaddress ="NO";
+                    }
+                ?>
+                    <option value="new_add">Enter New Address</option>
+                </select>
+                <div id="checkout_billing_address_form" data-addaddress="<?php echo $addaddress; ?>" style="<?php echo $billing_dispaly ?>">
+                    <form method="post" id="new_billing_add_form">
+                    <ul>
+                 <li class="row">
+                        <div class="col-sm-12">
                             <label for="first_name" class="required">First Name</label>
-                            <input type="text" class="input form-control" name="" id="first_name">
+                            <input type="text" class="input form-control" name="fname"  data-validation="required"  data-validation-error-msg="Please Enter First Name"  id="bill_first_name">
                         </div><!--/ [col] -->
-                        <div class="col-sm-6">
-                            <label for="last_name" class="required">Last Name</label>
-                            <input type="text" name="" class="input form-control" id="last_name">
+                    </li>
+                 <li class="row">
+                        <div class="col-sm-12">
+                            <label for="first_name" class="required">Last Name</label>
+                            <input type="text" class="input form-control" name="lname" id="bill_first_name"   data-validation="required"  data-validation-error-msg="Please Enter Last Name"  >
                         </div><!--/ [col] -->
+                    </li>                    
+                 <li class="row">
+
+                        <div class="col-sm-12">
+                            <label for="company_name">Company Name</label>
+                            <input type="text" name="company_name" class="input form-control" id="bill_company_name">
+                        </div><!--/ [col] -->
+                        
                     </li><!--/ .row -->
                     <li class="row">
-                        <div class="col-sm-6">
-                            <label for="company_name">Company Name</label>
-                            <input type="text" name="" class="input form-control" id="company_name">
-                        </div><!--/ [col] -->
-                        <div class="col-sm-6">
-                            <label for="email_address" class="required">Email Address</label>
-                            <input type="text" class="input form-control" name="" id="email_address">
-                        </div><!--/ [col] -->
-                    </li><!--/ .row -->
-                    <li class="row"> 
+            
+                        
                         <div class="col-xs-12">
 
                             <label for="address" class="required">Address</label>
-                            <input type="text" class="input form-control" name="" id="address">
+                            <input type="text" class="input form-control" name="add1" id="address"   data-validation="required"  data-validation-error-msg="Please Enter Address"  >
 
-                        </div><!--/ [col] -->
+                        </div>
+                        
+                    </li><!--/ .row -->
+                    <li class="row"> 
+                        
+                     
+                        <div class="col-xs-12">
+
+                            <label for="address" class="required">Address 2</label>
+                            <input type="text" class="input form-control" name="add2" id="address2">
+
+                        </div>
+                        
+                        
+                        <!--/ [col] -->
 
                     </li><!-- / .row -->
 
                     <li class="row">
+                         
 
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             
                             <label for="city" class="required">City</label>
-                            <input class="input form-control" type="text" name="" id="city">
+                            <input class="input form-control" type="text" name="city" id="city"   data-validation="required"  data-validation-error-msg="Please Enter State Name"  >
 
                         </div><!--/ [col] -->
 
-                        <div class="col-sm-6">
+                        
+                    </li><!--/ .row -->
+
+                    <li class="row">
+                     
+                        <div class="col-sm-12">
+
+                            <label for="postal_code" class="required">Zip/Postal Code</label>
+                            <input class="input form-control" type="text" name="zip" id="postal_code"   data-validation="required"  data-validation-error-msg="Please Enter Zip"  >
+                        </div><!--/ [col] -->
+
+   
+                    </li><!--/ .row -->
+
+
+                    <li class="row">
+                   
+
+               
+                        
+                                             <div class="col-sm-12">
                             <label class="required">State/Province</label>
-                                <select class="input form-control" name="">
-                                    <option value="Alabama">Alabama</option>
+                                <select class="input form-control" name="state">
+                                    <option value="NY">New York</option>
                                     <option value="Illinois">Illinois</option>
                                     <option value="Kansas">Kansas</option>
                             </select>
                         </div><!--/ [col] -->
                     </li><!--/ .row -->
 
-                    <li class="row">
-
-                        <div class="col-sm-6">
-
-                            <label for="postal_code" class="required">Zip/Postal Code</label>
-                            <input class="input form-control" type="text" name="" id="postal_code">
-                        </div><!--/ [col] -->
-
-                        <div  class="col-sm-6">
-                            <label class="required">Country</label>
-                            <select class="input form-control" name="">
-                                <option value="USA">USA</option>
-                                <option value="Australia">Australia</option>
-                                <option value="Austria">Austria</option>
-                                <option value="Argentina">Argentina</option>
-                                <option value="Canada">Canada</option>
-                            </select>
-                        </div><!--/ [col] -->
-                    </li><!--/ .row -->
-                    <li class="row">
-                        <div class="col-sm-6">
-                            <label for="telephone" class="required">Telephone</label>
-                            <input class="input form-control" type="text" name="" id="telephone">
-                        </div><!--/ [col] -->
-
-                        <div class="col-sm-6">
-                            <label for="fax">Fax</label>
-                            <input class="input form-control" type="text" name="" id="fax">
-                        </div><!--/ [col] -->
-
-                    </li><!--/ .row -->
-
-                    <li class="row">
-                        <div class="col-sm-6">
-                            <label for="password" class="required">Password</label>
-                            <input class="input form-control" type="password" name="" id="password">
-                        </div><!--/ [col] -->
-
-                        <div class="col-sm-6">
-                            <label for="confirm" class="required">Confirm Password</label>
-                            <input class="input form-control" type="password" name="" id="confirm">
-                        </div><!--/ [col] -->
-                    </li><!--/ .row -->
-                    <li>
-                        <button class="button" id="checkout_billing">Continue</button>
-                    </li>
                 </ul>
+                        <input type="hidden" name="buyer_id" value="<?php echo $_SESSION['user']['id'] ?>" />                  
+                    </form>
+                </div>
+                <button class="button" id="checkout_billing">Continue</button>
+                </div>
+                
+                <div id="checkout_billing_data_box">
+                    <h3>Billig Address <a href="" style="color:red; font-size:12px;vertical-align: middle;">(Change)</a></h3>
+                    <p class="fname_lname"><strong>BInal Patel</strong></p>
+                    <p class="company">Icelldeals</p>
+                    <p class="add">888 Hempstead tpke, Apt 2</p>
+                    <p class="city">Franklin Square</p>
+                    <p class="state_zip">NY - 11010</p>
+                </div>
+      
             </div>
             <h3 class="checkout-sep">3. Shipping Information</h3>
             <div class="box-border checkout_steps" id="checkout_step_3">
-                <ul>
-                                    
-                    <li class="row">
+                
+                 <div id="checkout_shipping_from_box">
+                <p>Select Billing Address or Enter New One</p>
+                <select id="checkout_shipping_address"  class="input form-control" >
+                    <?php
+    $billing_address_sql = "select * from billing where buyer_id={$_SESSION['user']['id']} order by id asc";
+                $result_set = $dtb->query($billing_address_sql);
+                while( $result = $result_set->fetch_object()){
+
+                    echo '<option value="'.$result->id.'" selected>&nbsp;'.$result->add1.','.$result->city.','.$result->state.' '.$result->zip.'</option>';
+
+                }
+
+                    if($result_set->num_rows <=0){
                         
-                        <div class="col-sm-6">
-                            
-                            <label for="first_name_1" class="required">First Name</label>
-                            <input class="input form-control" type="text" name="" id="first_name_1">
-
+                        $billing_dispaly='display:block';
+                        $addaddress ="YES";
+                    }
+                    else{
+                        $billing_dispaly='';
+                        $addaddress ="NO";
+                    }
+                ?>
+                    <option value="new_add">Enter New Address</option>
+                </select>
+                <div id="checkout_shipping_address_form" data-addaddress="<?php echo $addaddress; ?>" style="<?php echo $billing_dispaly ?>">
+                    <form method="post" id="new_shipping_add_form">
+                    <ul>
+                 <li class="row">
+                        <div class="col-sm-12">
+                            <label for="first_name" class="required">First Name</label>
+                            <input type="text" class="input form-control" name="fname"  data-validation="required"  data-validation-error-msg="Please Enter First Name"  id="bill_first_name">
                         </div><!--/ [col] -->
-
-                        <div class="col-sm-6">
-                            
-                            <label for="last_name_1" class="required">Last Name</label>
-                            <input class="input form-control" type="text" name="" id="last_name_1">
-
+                    </li>
+                 <li class="row">
+                        <div class="col-sm-12">
+                            <label for="first_name" class="required">Last Name</label>
+                            <input type="text" class="input form-control" name="lname" id="bill_first_name"   data-validation="required"  data-validation-error-msg="Please Enter Last Name"  >
                         </div><!--/ [col] -->
+                    </li>                    
+                 <li class="row">
 
-                    </li><!--/ .row -->
-
-                    <li class="row">
+                        <div class="col-sm-12">
+                            <label for="company_name">Company Name</label>
+                            <input type="text" name="company_name" class="input form-control" id="bill_company_name">
+                        </div><!--/ [col] -->
                         
-                        <div class="col-sm-6">
-                            
-                            <label for="company_name_1">Company Name</label>
-                            <input class="input form-control" type="text" name="" id="company_name_1">
-
-                        </div><!--/ [col] -->
-
-                        <div class="col-sm-6">
-                            
-                            <label for="email_address_1" class="required">Email Address</label>
-                            <input class="input form-control" type="text" name="" id="email_address_1">
-
-                        </div><!--/ [col] -->
-
                     </li><!--/ .row -->
-
                     <li class="row">
-
+            
+                        
                         <div class="col-xs-12">
 
-                            <label for="address_1" class="required">Address</label>
-                            <input class="input form-control" type="text" name="" id="address_1">
+                            <label for="address" class="required">Address</label>
+                            <input type="text" class="input form-control" name="add1" id="address"   data-validation="required"  data-validation-error-msg="Please Enter Address"  >
+
+                        </div>
+                        
+                    </li><!--/ .row -->
+                    <li class="row"> 
+                        
+                     
+                        <div class="col-xs-12">
+
+                            <label for="address" class="required">Address 2</label>
+                            <input type="text" class="input form-control" name="add2" id="address2">
+
+                        </div>
+                        
+                        
+                        <!--/ [col] -->
+
+                    </li><!-- / .row -->
+
+                    <li class="row">
+                         
+
+                        <div class="col-sm-12">
+                            
+                            <label for="city" class="required">City</label>
+                            <input class="input form-control" type="text" name="city" id="city"   data-validation="required"  data-validation-error-msg="Please Enter State Name"  >
 
                         </div><!--/ [col] -->
 
+                        
                     </li><!--/ .row -->
 
                     <li class="row">
+                     
+                        <div class="col-sm-12">
 
-                        <div class="col-sm-6">
-                            
-                            <label for="city_1" class="required">City</label>
-                            <input class="input form-control" type="text" name="" id="city_1">
-
+                            <label for="postal_code" class="required">Zip/Postal Code</label>
+                            <input class="input form-control" type="text" name="zip" id="postal_code"   data-validation="required"  data-validation-error-msg="Please Enter Zip"  >
                         </div><!--/ [col] -->
 
-                        <div class="col-sm-6">
+   
+                    </li><!--/ .row -->
 
+
+                    <li class="row">
+                   
+
+               
+                        
+                                             <div class="col-sm-12">
                             <label class="required">State/Province</label>
-
-                            <div class="custom_select">
-
-                                <select class="input form-control" name="">
-
-                                    <option value="Alabama">Alabama</option>
+                                <select class="input form-control" name="state">
+                                    <option value="NY">New York</option>
                                     <option value="Illinois">Illinois</option>
                                     <option value="Kansas">Kansas</option>
-
-                                </select>
-
-                            </div>
-
+                            </select>
                         </div><!--/ [col] -->
-
-                    </li><!--/ .row -->
-
-                    <li class="row">
-
-                        <div class="col-sm-6">
-
-                            <label for="postal_code_1" class="required">Zip/Postal Code</label>
-                            <input class="input form-control" type="text" name="" id="postal_code_1">
-
-                        </div><!--/ [col] -->
-
-                        <div class="col-sm-6">
-
-                            <label class="required">Country</label>
-
-                            <div class="custom_select">
-
-                                <select class="input form-control" name="">
-                                    
-                                    <option value="USA">USA</option>
-                                    <option value="Australia">Australia</option>
-                                    <option value="Austria">Austria</option>
-                                    <option value="Argentina">Argentina</option>
-                                    <option value="Canada">Canada</option>
-
-                                </select>
-
-                            </div>
-
-                        </div><!--/ [col] -->
-
-                    </li><!--/ .row -->
-
-                    <li class="row">
-
-                        <div class="col-sm-6">
-
-                            <label for="telephone_1" class="required">Telephone</label>
-                            <input class="input form-control" type="text" name="" id="telephone_1">
-
-                        </div><!--/ [col] -->
-
-                        <div class="col-sm-6">
-
-                            <label for="fax_1">Fax</label>
-                            <input class="input form-control" type="text" name="" id="fax_1">
-
-                        </div><!--/ [col] -->
-
                     </li><!--/ .row -->
 
                 </ul>
+                        <input type="hidden" name="buyer_id" value="<?php echo $_SESSION['user']['id'] ?>" />                  
+                    </form>
+                </div>
                 <button class="button" id="checkout_shipping">Continue</button>
+                </div>
+                
+                <div id="checkout_shipping_data_box">
+                    <h3>Billig Address <a href="" style="color:red; font-size:12px;vertical-align: middle;">(Change)</a></h3>
+                    <p class="fname_lname"><strong>BInal Patel</strong></p>
+                    <p class="company">Icelldeals</p>
+                    <p class="add">888 Hempstead tpke, Apt 2</p>
+                    <p class="city">Franklin Square</p>
+                    <p class="state_zip">NY - 11010</p>
+                </div>
+                
+                
             </div>
             <h3 class="checkout-sep">4. Shipping Method</h3>
             <div class="box-border checkout_steps"  id="checkout_step_4">
@@ -297,6 +313,11 @@
 				</div>
             </div>
 
+        </div>
+            </div>
+            <div class="col-sm-4">
+            
+            </div>
         </div>
     </div>
 </div>
