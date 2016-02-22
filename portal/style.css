@@ -65,9 +65,12 @@ vertical-align: baseline;
 height: 34px;
 }
 .variation_data .qty{
-	width: 100px;
+	width: 75px;
 vertical-align: baseline;
 height: 34px;
+}
+.variation_data .color{
+	width: 47px;
 }
 .variation_data_delete{
 	padding: 7px 6px;
@@ -104,5 +107,5 @@ border:solid 1px #cccccc !important;
 	padding-bottom: 3px !important;
 }
 ul.select2-selection__rendered{
-	height: 38px;
+	min-height: 38px;
 }

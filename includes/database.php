@@ -89,9 +89,12 @@ return $value;
 	
 	public function affected_rows(){		
         
-        
-		
 	return mysqli_affected_rows($this->connection);	
+	}
+
+	public function last_inserted_id(){
+		
+	return mysqli_insert_id($this->connection);
 	}
 
 	

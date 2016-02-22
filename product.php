@@ -20,7 +20,8 @@ while( $result = $result_set->fetch_object()){
     'img'=>$result->img,
 	'brand'=>$result->brand,
 	'description'=>$result->description,
-    'variation_type'=>$result->variation_type
+    'variation_type'=>$result->variation_type,
+    'upc'=>$result->upc
 	);
 }
 
@@ -120,7 +121,7 @@ while( $result = $result_set->fetch_object()){
                                 </div>
                                 
                                 <div class="info-orther">
-                                    <p>Item Code: # PRD<?php echo $product['id']; ?></p>
+                                    <p>Item Code: # <?php echo $product['upc']; ?></p>
                                     <!-- <p>Availability: <span class="in-stock">In stock</span></p> -->
                                 </div>
                                 <div class="product-desc">

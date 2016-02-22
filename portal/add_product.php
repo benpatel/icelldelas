@@ -4,7 +4,7 @@
 <div class="container">
 	<div class="row">
 		<div style="height:20px;" ="spacer"></div>
-	<div class="col-sm-6">
+	<div class="col-sm-8">
 	<h2>Product Detail</h2>
 			</br>
 	<form action="add_prd.php" method="post" id="add_product">
@@ -127,15 +127,13 @@
                         </div><!--/ [col] -->
                     </li><!--/ .row -->
 
-                   <!-- <li class="row">    
+                  <li class="row">    
                         <div class="col-sm-12">
-                            <p>
-                            <input type="checkbox" name="company_name" class="input" id="bill_company_name">
-							<label for="company_name">Variation?</label>
-                            </p>
+                            <label for="company_name">Description</label>
+                            <textarea name="description" class="input form-control"    data-validation="required"  data-validation-error-msg="Please Enter Description"></textarea>
                         </div>
                         
-                    </li>--><!--/ .row -->
+                    </li><!--/ .row -->
 
 
                     <li class="row variation_row">    
@@ -186,7 +184,7 @@
 
 	</div>
 
-	<div class="col-sm-6">
+	<div class="col-sm-4">
 			<h2>Upload Images <span class="image_Error_Display"></span></h2>
 			</br>
 			<form action="upload.php" method="post" id="file_upload" enctype="multipart/form-data">
