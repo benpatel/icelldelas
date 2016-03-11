@@ -926,7 +926,7 @@ span.notify-right{
  [ 3.4.1 Vertical megamenus]
  */
 .box-vertical-megamenus{
-    position: absolute;
+   /* position: absolute;*/
     left: 15px;
     right: 15px;
     z-index: 1000;
@@ -956,7 +956,7 @@ span.notify-right{
 .box-vertical-megamenus .vertical-menu-content{
     border-top: 3px solid #ff0000;
     background: #fff;
-    display: none;
+    /*display: none;*/
     padding-bottom: 15px;
 }
 .home .box-vertical-megamenus .vertical-menu-content{

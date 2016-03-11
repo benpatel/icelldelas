@@ -38,8 +38,9 @@ while( $result = $result_set->fetch_object()){
 echo "<pre>";
 print_r($_SERVER);
 echo "</pre>";
-$myFile = "header_nav.html"; // or .php   
+/*$myFile = "header_nav.html"; // or .php   
 $fh = fopen($myFile, 'w'); // or die("error");  
 $stringData = $list;   	
 fwrite($fh, $stringData);
+*/
 ?>
