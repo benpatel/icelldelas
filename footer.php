@@ -389,11 +389,8 @@ var request = $.ajax({
 });
  
 request.done(function( data ) {
-    console.log(data);
-  $('#product_price .price').text("$"+data.sale_price);
-    $('#product_price .discount').text("-%"+(data.msp_price-data.sale_price)*100/data.msp_price);
-    $('#product_price .old-price').text("$"+data.msp_price);
-    $('#cart_product_id').val(data.id)
+    console.log(data[0]);
+
 });
 
     return false;
